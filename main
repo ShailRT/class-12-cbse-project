@@ -1,0 +1,75 @@
+while True:
+ menu = int(input(''' 
+  ___________________________________________________
+ |                                                   |
+ |                       __                          |
+ |               |\  /| |__ |\ | |  |                |
+ |               | \/ | |__ | \| |__|                |
+ |                                                   | 
+ | 1.enter data of student                           |
+ | 2.search for student data                         |
+ | 3.delete student data                             |
+ | 4.edit student data                               |
+ | 5.exit                                            |
+ |___________________________________________________|
+ 
+ enter your choice:'''))
+ if menu==1:
+     file=open("StudentData.txt","a")
+     name=input("enter student name:")
+     file.write(name)
+     file.write(" ")
+     cls=input("enter student class:")
+     file.write(cls)
+     file.write("\n")
+     file.close
+ elif menu==2:
+     file=open("StudentData.txt","r")
+     name1=input("enter the name:")
+     for i in file:
+         x=i.split()
+         if x[0]==name1:
+             print(x)
+             break
+     file.close
+ elif menu==3:
+     file=open("StudentData.txt","r")
+     name1=input("enter the name:")
+     y=file.readlines()
+     for i in y:
+        if name1 in i:
+            y.remove(i)
+            break
+     file.close()
+     file=open("StudentData.txt","w")
+     file.writelines(y)
+     file.close()
+ elif menu==4:
+     file=open("StudentData.txt","a+")
+     name2=input("enter name of student:")
+     y=file.readlines()
+     for i in y:
+         if name2 in i:
+                edit=i.split()
+                option=int(input('''choose
+                1.name
+                2.class
+                enter your choice:'''))
+                if option==1:
+                    NAME=input("enter new name:")
+                    edit[0]=NAME
+                    file.remove(i)
+                    file.write(edit)
+                elif option==2:
+                    clas=input("enter the new class")
+                    edit[1]=clas
+                    file.remove(i)
+                    file.write(edit)
+         else:
+             print("ok")
+     file.close()
+ elif menu==5:
+     break
+            
+          
+         
